@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --green: #0f4f39;
+  --green-light: #1b6b4a;
+}
+
+/* ===== عام ===== */
+body {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  margin: 0;
+  direction: rtl;
+  background: #eef2f3;
+}
+
+/* ===== الهيدر ===== */
+nav {
+  background: var(--green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+.nav-brand {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* ===== أزرار الهيدر ===== */
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+/* 🌙 الوضع الليلي */
+.dark-btn {
+  background: #1b6b4a;
+}
+
+.dark-btn:hover {
+  background: #14532d;
+  transform: translateY(-2px);
+}
+
+/* 🔴 تسجيل الخروج */
+.logout-btn {
+  background: #d11a2a;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+/* ===== الحاوية ===== */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ===== العنوان + زر الإضافة ===== */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* ===== زر إضافة ===== */
+.add-btn {
+  background: var(--green);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: #0b3d2a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== المربع الأخضر ===== */
+.info-box {
+  background: #dff5e4;
+  color: #0f4f39;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+/* ===== الصندوق ===== */
+.table-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== الجدول ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f3f3f3;
+}
+
+th {
+  padding: 12px;
+  text-align: center;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* ===== أزرار العمليات ===== */
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* تعديل */
+.edit {
+  background: #1b6b4a;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.edit:hover {
+  background: #14532d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* حذف */
+.delete {
+  background: #d11a2a;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.delete:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark nav {
+  background: #020617;
+}
+
+body.dark .table-box {
+  background: #1e293b;
+}
+
+body.dark thead {
+  background: #334155;
+}
+
+body.dark td {
+  border-bottom: 1px solid #475569;
+}
+
+body.dark .info-box {
+  background: #1e3a2f;
+  color: #d1fae5;
+}
+
+body.dark .add-btn {
+  background: #14532d;
+}
+
+body.dark .edit {
+  background: #22c55e;
+}
+
+body.dark .delete {
+  background: #ef4444;
+}
