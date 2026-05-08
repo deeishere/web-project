@@ -1,11 +1,28 @@
-function toggleDarkMode() {
-  document.body.classList.toggle("dark");
+function updateDarkButtons() {
+  const isDark = document.body.classList.contains("dark");
+  const buttons = document.querySelectorAll(".dark-btn");
 
-  let btn = document.querySelector(".dark-btn");
-
-  if(document.body.classList.contains("dark")){
-    btn.innerText = "الوضع النهاري";
-  } else {
-    btn.innerText = "الوضع الليلي";
-  }
+  buttons.forEach((btn) => {
+    btn.innerText = isDark ? "الوضع النهاري" : "الوضع الليلي";
+  });
 }
+
+function applySavedTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  const shouldUseDark = savedTheme === "dark";
+
+  document.body.classList.toggle("dark", shouldUseDark);
+  updateDarkButtons();
+}
+
+function toggleDarkMode() {
+  const isDarkNow = document.body.classList.toggle("dark");
+  localStorage.setItem("theme", isDarkNow ? "dark" : "light");
+  updateDarkButtons();
+}
+
+function toggleMode() {
+  toggleDarkMode();
+}
+
+document.addEventListener("DOMContentLoaded", applySavedTheme);

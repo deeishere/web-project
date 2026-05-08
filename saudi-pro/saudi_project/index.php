@@ -1,56 +1,57 @@
-<?php include("config.php"); ?>
+<?php 
+include("config.php");
+$page = 'home';
+?>
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اكتشف السعودية</title>
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 </head>
-
 <body>
 
 <header>
-  <h1>اكتشف السعودية</h1>
-  <<nav>
-  <div class="nav-brand">اكتشف السعودية</div>
-
-  <div class="nav-links">
-
-    <a href="index.php" class="<?php if($page=='home') echo 'active'; ?>">الرئيسية</a>
-
-    <a href="gallery.php" class="<?php if($page=='gallery') echo 'active'; ?>">معرض المناطق</a>
-
-    <a href="admin/login.php">دخول المشرف</a>
-
-    <button onclick="toggleMode()" class="dark-btn">
-      الوضع الليلي
-    </button>
-
-  </div>
-</nav>
+  <nav>
+    <div class="nav-brand">اكتشف السعودية</div>
+    <div class="nav-links">
+      <a href="index.php" class="<?php if($page=='home') echo 'active'; ?>">الرئيسية</a>
+      <a href="gallery.php">معرض المناطق</a>
+      <a href="admin/login.php">دخول المشرف</a>
+      <button onclick="toggleDarkMode()" class="dark-btn" type="button">الوضع الليلي</button>
+    </div>
+  </nav>
 </header>
 
-<section class="top-section">
-
+<div class="top-section">
   <div class="left-box">
     <h2>موقع ثقافي تفاعلي للتعريف بالمملكة</h2>
-    <p>استكشف مناطق المملكة وتعرف على أبرز المعالم.</p>
+    <p>استكشف مناطق المملكة العربية السعودية وتعرف على أهم المعالم التاريخية والثقافية. اختر منطقة من المعرض للانتقال إلى صفحة التفاصيل.</p>
     <a href="gallery.php" class="btn">ابدأ الاستكشاف</a>
   </div>
-
   <div class="right-box">
     <h2>👋 أهلاً بك</h2>
-    <p>ابدأ رحلتك لاكتشاف ثقافة المملكة</p>
+    <p>ابدأ رحلتك لاكتشاف مناطق المملكة</p>
   </div>
+</div>
 
-</section>
+<div class="features">
+  <div class="feature">
+    ⭐ الهدف
+    <p>تقديم معلومات ثرية متنوعة عن مناطق المملكة وأبرز الوجهات السياحية.</p>
+  </div>
+  <div class="feature">
+    📍 المناطق
+    <p>معرض تفاعلي ينقل المستخدم بين المناطق (صور + عناوين + روابط).</p>
+  </div>
+  <div class="feature">
+    📖 التفاصيل
+    <p>صفحة تعرض وصفاً ومعلومات تاريخية ثرية عن المكان المختار.</p>
+  </div>
+</div>
 
-<section class="features">
-  <div class="feature">⭐ الهدف</div>
-  <div class="feature">📍 المناطق</div>
-  <div class="feature">📖 التفاصيل</div>
-</section>
-
+<footer>© اكتشف السعودية — جامعة الملك سعود</footer>
+<script src="script.js"></script>
 </body>
 </html>

@@ -32,7 +32,15 @@ CREATE TABLE `places` (
   `name` varchar(100) NOT NULL,
   `region` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `features` text DEFAULT NULL,
+  `activities` text DEFAULT NULL,
+  `landmarks` text DEFAULT NULL,
+  `best_time` varchar(255) DEFAULT NULL,
+  `image2` varchar(255) DEFAULT NULL,
+  `image3` varchar(255) DEFAULT NULL,
+  `image4` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
