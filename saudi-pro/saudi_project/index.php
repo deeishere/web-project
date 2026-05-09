@@ -51,7 +51,28 @@ $page = 'home';
   </div>
 </div>
 
-<footer>© اكتشف السعودية — جامعة الملك سعود</footer>
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">13</div>
+      <div class="stat-label">منطقة إدارية</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7</div>
+      <div class="stat-label">مواقع تراث عالمي</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2030</div>
+      <div class="stat-label">رؤية المستقبل</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2M+</div>
+      <div class="stat-label">زائر سنوياً</div>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; اكتشف السعودية - دعاء الغامدي - جود الحقباني - ريما السمراني</footer>
 <script src="script.js"></script>
 </body>
 </html>

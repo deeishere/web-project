@@ -73,6 +73,22 @@ if(isset($_POST['update'])){
     exit();
 }
 
+if(isset($_POST['delete_place'])){
+    $conn->query("DELETE FROM places WHERE id=" . $id . " LIMIT 1");
+    header("Location: dashboard.php?msg=deleted");
+    exit();
+}
+
+if(isset($_POST['delete_single_image'])){
+    $allowedImageCols = ['image', 'image2', 'image3', 'image4'];
+    $targetCol = $_POST['image_col'] ?? '';
+    if(in_array($targetCol, $allowedImageCols, true) && in_array($targetCol, $existingCols, true)){
+        $conn->query("UPDATE places SET " . $targetCol . "='' WHERE id=" . $id . " LIMIT 1");
+    }
+    header("Location: update.php?id=" . $id);
+    exit();
+}
+
 $result = $conn->query("SELECT * FROM places WHERE id=$id");
 if(!$result || $result->num_rows == 0){
     header("Location: dashboard.php");
@@ -84,7 +100,10 @@ $mainPreview = !empty($row['image']) ? htmlspecialchars($row['image']) : '';
 $galleryPreview = [];
 foreach(['image2', 'image3', 'image4'] as $imgCol){
     if(isset($row[$imgCol]) && !empty($row[$imgCol])){
-        $galleryPreview[] = htmlspecialchars($row[$imgCol]);
+        $galleryPreview[] = [
+            'col' => $imgCol,
+            'name' => htmlspecialchars($row[$imgCol])
+        ];
     }
 }
 ?>
@@ -206,12 +225,28 @@ foreach(['image2', 'image3', 'image4'] as $imgCol){
       <button type="submit" name="update" class="form-submit">حفظ التعديلات</button>
     </form>
 
-    <br>
-    <a href="dashboard.php" class="back-link">← رجوع إلى لوحة التحكم</a>
+    
   </div>
 
   <aside class="form-card update-preview-card">
-    <h3>معاينة المحتوى الحالي</h3>
+    <h3>معاينة المكان للتحديث</h3>
+    <div class="preview-group">
+      <strong>اسم المكان</strong>
+      <p><?php echo htmlspecialchars($row['name'] ?? ''); ?></p>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin:0 0 14px;">
+      <form method="POST" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف هذا المكان نهائياً؟');" style="margin:0;">
+        <button type="submit" name="delete_place" class="form-submit" style="background:#cf2637; margin:0; width:170px;">حذف الكل</button>
+      </form>
+      <button
+        type="button"
+        class="form-submit"
+        style="background:#0d7a3a; margin:0; width:170px;"
+        onclick="window.location.href='update.php?id=<?php echo $id; ?>';"
+      >
+        اعاده تحميل البيانات
+      </button>
+    </div>
     <div class="preview-group">
       <strong>الصورة الرئيسية للمكان</strong>
       <?php if(!empty($mainPreview)): ?>
@@ -226,7 +261,13 @@ foreach(['image2', 'image3', 'image4'] as $imgCol){
       <?php if(count($galleryPreview) > 0): ?>
         <div class="preview-grid">
           <?php foreach($galleryPreview as $img): ?>
-            <img src="../images/<?php echo $img; ?>" alt="صورة معرض">
+            <div>
+              <img src="../images/<?php echo $img['name']; ?>" alt="صورة معرض">
+              <form method="POST" onsubmit="return confirm('هل تريد حذف هذه الصورة فقط؟');" style="margin-top:6px;">
+                <input type="hidden" name="image_col" value="<?php echo $img['col']; ?>">
+                <button type="submit" name="delete_single_image" class="form-submit" style="background:#cf2637; margin:0; padding:8px;">حذف هذه الصورة</button>
+              </form>
+            </div>
           <?php endforeach; ?>
         </div>
       <?php else: ?>
@@ -236,7 +277,7 @@ foreach(['image2', 'image3', 'image4'] as $imgCol){
   </aside>
 </div>
 
-<footer>© اكتشف السعودية — جامعة الملك سعود</footer>
+<footer>&copy; اكتشف السعودية - دعاء الغامدي - جود الحقباني - ريما السمراني</footer>
 <script src="../script.js"></script>
 
 </body>

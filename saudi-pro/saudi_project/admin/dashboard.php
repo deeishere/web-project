@@ -85,7 +85,7 @@ $result = $conn->query("SELECT * FROM places ORDER BY id");
 
 </div>
 
-<footer>© اكتشف السعودية — جامعة الملك سعود</footer>
+<footer>&copy; اكتشف السعودية - دعاء الغامدي - جود الحقباني - ريما السمراني</footer>
 <script src="../script.js"></script>
 </body>
 </html>
