@@ -9,3 +9,4 @@ if($id > 0){
 
 header("Location: dashboard.php?msg=deleted");
 exit();
+?>
